@@ -219,11 +219,32 @@
         }
 
         if ( $noteTypeField.length ) {
+            /*
+             * WooCommerce's own values are '' (private note) and 'customer' (note to customer) —
+             * see class-wc-meta-box-order-notes.php and WC_AJAX::add_order_note(), which treats
+             * only 'customer' as a customer note. Up to 1.2.6 this set 'internal_note' /
+             * 'customer_note', which match no option: the select went blank and every note,
+             * customer templates included, was saved as PRIVATE and never emailed.
+             * Try WooCommerce's values first; keep the old ones only as a fallback.
+             */
+            var candidates = noteType === 'internal' ? [ '', 'internal_note', 'private' ] : [ 'customer', 'customer_note' ];
+
             if ( $noteTypeField.is( 'select' ) ) {
-                $noteTypeField.val( noteType === 'internal' ? 'internal_note' : 'customer_note' );
+                for ( var i = 0; i < candidates.length; i++ ) {
+                    if ( $noteTypeField.find( 'option[value="' + candidates[ i ] + '"]' ).length ) {
+                        // trigger change so WooCommerce relabels its "Add … note" button.
+                        $noteTypeField.val( candidates[ i ] ).trigger( 'change' );
+                        break;
+                    }
+                }
             } else {
-                var radioVal = noteType === 'internal' ? 'internal_note' : 'customer_note';
-                $noteTypeField.filter( '[value="' + radioVal + '"]' ).prop( 'checked', true );
+                for ( var j = 0; j < candidates.length; j++ ) {
+                    var $radio = $noteTypeField.filter( '[value="' + candidates[ j ] + '"]' );
+                    if ( $radio.length ) {
+                        $radio.prop( 'checked', true ).trigger( 'change' );
+                        break;
+                    }
+                }
             }
         }
 

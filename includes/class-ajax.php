@@ -39,7 +39,9 @@ class WC_ONT_Ajax {
             'order_id'        => $order->get_id(),
             'customer_name'   => $order->get_formatted_billing_full_name(),
             'billing_email'   => $order->get_billing_email(),
-            'total'           => $order->get_formatted_order_total(),
+            // get_formatted_order_total() returns WooCommerce price HTML (<span class="woocommerce-Price-amount">…)
+            // — strip it to plain text such as "£25.00" so the note gets the amount, not markup.
+            'total'           => wp_strip_all_tags( html_entity_decode( $order->get_formatted_order_total(), ENT_QUOTES, 'UTF-8' ) ),
             'subscription_id' => '',
             'next_payment'    => '',
             'start_date'      => '',

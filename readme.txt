@@ -5,7 +5,7 @@ Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
 Requires Plugins: woocommerce
-Stable tag: 1.2.6
+Stable tag: 1.2.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,16 @@ No. The plugin only loads its assets on WooCommerce order and subscription admin
 
 == Changelog ==
 
+= 1.2.8 =
+* Security: updated the bundled Freemius SDK from 2.13.4 to 2.13.5 — security hardening of input handling and output escaping in admin notices and the opt-in flow, and pricing-page fixes. No change to how the plugin works.
+
+= 1.2.7 =
+* Fixed: the {total} variable inserted WooCommerce's price HTML (for example `<span class="woocommerce-Price-amount amount">…`) into the note instead of the plain amount. It now inserts the readable total, for example "£25.00".
+* Fixed: inserting a customer template left the note's Visibility field blank, so the note was saved as a private note and the customer was not emailed. The template's type now sets "Public note to customer" or "Private note" correctly.
+* Changed: the plugin's homepage link now points to the plugin page on pro-webdesign.co.uk instead of back to this WordPress.org listing.
+* Internal: removed the "Domain Path" header — it pointed to a /languages folder the plugin does not ship; translations come from translate.wordpress.org.
+* Internal: "WC tested up to" bumped to 11.2 — confirmed on WooCommerce 11.2.1, WooCommerce Subscriptions 9.3.0, WordPress 7.1.3 and PHP 8.5.12.
+
 = 1.2.6 =
 * Internal: bumped the plugin header's "WC tested up to" from 10.8 to 11.1, confirmed against a live test site running WooCommerce 11.1.1 and WooCommerce Subscriptions 9.2.0 with no issues.
 
@@ -152,6 +162,12 @@ No. The plugin only loads its assets on WooCommerce order and subscription admin
 * Variable substitution: `{order_id}`, `{customer_name}`, `{billing_email}`, `{total}`
 
 == Upgrade Notice ==
+
+= 1.2.8 =
+Updates the bundled Freemius SDK to 2.13.5 (security hardening). Includes the 1.2.7 fixes: customer templates are sent to the customer, {total} inserts the amount.
+
+= 1.2.7 =
+Customer templates are now sent to the customer (they were saved as private notes), and {total} inserts the amount instead of HTML code.
 
 = 1.0.1 =
 Added full WooCommerce Subscriptions support including HPOS subscription screens.
