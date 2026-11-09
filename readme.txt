@@ -5,7 +5,7 @@ Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
 Requires Plugins: woocommerce
-Stable tag: 1.2.8
+Stable tag: 1.2.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,9 @@ No. The plugin only loads its assets on WooCommerce order and subscription admin
 6. Automatically add a note when an order changes status
 
 == Changelog ==
+
+= 1.2.9 =
+* Fixed: the "Upgrade to Pro" and "Upgrade Now" buttons opened an address that WordPress refused ("Sorry, you are not allowed to access this page"). The plugin's licensing menu was not attached to its admin page, so the pricing and account pages were never registered. They now open under WooCommerce → Order Note Templates.
 
 = 1.2.8 =
 * Security: updated the bundled Freemius SDK from 2.13.4 to 2.13.5 — security hardening of input handling and output escaping in admin notices and the opt-in flow, and pricing-page fixes. No change to how the plugin works.
@@ -162,6 +165,9 @@ No. The plugin only loads its assets on WooCommerce order and subscription admin
 * Variable substitution: `{order_id}`, `{customer_name}`, `{billing_email}`, `{total}`
 
 == Upgrade Notice ==
+
+= 1.2.9 =
+Fixes the "Upgrade to Pro" buttons, which showed "Sorry, you are not allowed to access this page".
 
 = 1.2.8 =
 Updates the bundled Freemius SDK to 2.13.5 (security hardening). Includes the 1.2.7 fixes: customer templates are sent to the customer, {total} inserts the amount.

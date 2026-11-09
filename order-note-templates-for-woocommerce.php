@@ -4,7 +4,7 @@
  * Plugin Name: Pro Web Design Order Note Templates for WooCommerce
  * Plugin URI:  https://www.pro-webdesign.co.uk/plugins/order-note-templates
  * Description: Save and reuse order note templates in WooCommerce admin. Works with HPOS and WooCommerce Subscriptions.
- * Version:     1.2.8
+ * Version:     1.2.9
  * Author:      Pro Technologies Limited
  * Author URI:  https://www.pro-webdesign.co.uk
  * Text Domain: pro-web-design-order-note-templates-for-woocommerce
@@ -26,7 +26,7 @@ if ( function_exists( 'wc_ont_fs' ) ) {
      * `function_exists` CALL ABOVE TO PROPERLY WORK.
      */
     if ( !function_exists( 'wc_ont_fs' ) ) {
-        define( 'WC_ONT_VERSION', '1.2.8' );
+        define( 'WC_ONT_VERSION', '1.2.9' );
         define( 'WC_ONT_FILE', __FILE__ );
         define( 'WC_ONT_DIR', plugin_dir_path( __FILE__ ) );
         define( 'WC_ONT_URL', plugin_dir_url( __FILE__ ) );
@@ -52,7 +52,13 @@ if ( function_exists( 'wc_ont_fs' ) ) {
                         'is_require_payment' => false,
                     ),
                     'menu'             => array(
+                        'slug'    => 'wc-ont-templates',
+                        'account' => true,
                         'support' => false,
+                        'contact' => false,
+                        'parent'  => array(
+                            'slug' => 'woocommerce',
+                        ),
                     ),
                     'is_live'          => true,
                 ) );
