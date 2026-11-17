@@ -5,7 +5,7 @@ Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
 Requires Plugins: woocommerce
-Stable tag: 1.2.9
+Stable tag: 1.2.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,9 @@ No. The plugin only loads its assets on WooCommerce order and subscription admin
 6. Automatically add a note when an order changes status
 
 == Changelog ==
+
+= 1.2.10 =
+* Internal: "WC tested up to" bumped to 11.3 — confirmed on WooCommerce 11.3.0, WooCommerce Subscriptions 9.4.1 and WordPress 7.1.4. No functional changes.
 
 = 1.2.9 =
 * Fixed: the "Upgrade to Pro" and "Upgrade Now" buttons opened an address that WordPress refused ("Sorry, you are not allowed to access this page"). The plugin's licensing menu was not attached to its admin page, so the pricing and account pages were never registered. They now open under WooCommerce → Order Note Templates.
@@ -165,6 +168,9 @@ No. The plugin only loads its assets on WooCommerce order and subscription admin
 * Variable substitution: `{order_id}`, `{customer_name}`, `{billing_email}`, `{total}`
 
 == Upgrade Notice ==
+
+= 1.2.10 =
+Confirms compatibility with WooCommerce 11.3. No functional changes.
 
 = 1.2.9 =
 Fixes the "Upgrade to Pro" buttons, which showed "Sorry, you are not allowed to access this page".
